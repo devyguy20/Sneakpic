@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-ChatIn">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="ChatIn" clip-path="url(#clip-ChatIn)">
+    <g id="Regular-M" transform="translate(-7.451 84.98)">
+      <path id="Path_598" data-name="Path 598" d="M96.741-74.193c-4.978-5-12.007-5.787-20.353-5.787H38.368c-8.2,0-15.228.785-20.206,5.787s-5.71,12.016-5.71,20.207v37.864c0,8.387.732,15.351,5.71,20.354s12.007,5.787,20.3,5.787H76.388c8.346,0,15.374-.785,20.353-5.787s5.71-11.967,5.71-20.354V-53.839C102.451-62.226,101.72-69.239,96.741-74.193Z"/>
+    </g>
+  </g>
+</svg>
