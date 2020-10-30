@@ -11,7 +11,7 @@ const Splash = ({navigation}) => {
 
     const [user,setUser] = useState(null)
     const goToHomeScreen = () => {
-        navigation.navigate('HOMe')
+        navigation.navigate('Home')
     }
     
     
