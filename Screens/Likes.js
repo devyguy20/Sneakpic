@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 const Likes = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.bigText}>Likes</Text>
+            <Text style={styles.bigText}>Notifications</Text>
         </View>
     )
 }
