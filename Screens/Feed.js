@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const RealHome = () => {
+const Feed = () => {
     return (
         <View>
             <Text>HI</Text>
@@ -9,6 +9,6 @@ const RealHome = () => {
     )
 }
 
-export default RealHome
+export default Feed
 
 const styles = StyleSheet.create({})
