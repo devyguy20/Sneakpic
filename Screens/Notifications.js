@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const Likes = () => {
+const Notifications = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.bigText}>Notifications</Text>
@@ -9,7 +9,7 @@ const Likes = () => {
     )
 }
 
-export default Likes
+export default Notifications
 
 const styles = StyleSheet.create({
     container:{
