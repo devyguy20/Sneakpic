@@ -2,7 +2,7 @@
 la epic glizzy app
 # Packages:
 
-#Routes:
+# Routes:
 Main:
   -Chats
   -Profile
