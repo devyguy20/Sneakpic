@@ -5,21 +5,30 @@ import {Ionicons} from '@expo/vector-icons'
 
 
 
-const Design = () => {
+const Design = ({op}) => {
+    const Reverse = (i) => {
+        return{
+            padding:10,
+            flexDirection:i,
+            justifyContent:'space-around'
+        }
+    }
     return (
-        <View style={styles.row}  >
-            <Image style={styles.image} source={require('../assets/ChatInViewed.png')}/>
+        <View style={Reverse(op)}  >
+            <Image style={styles.image} source={require('../assets/ChatViewedPhoto.png')}/>
             <Image style={styles.image} source={require('../assets/ChatOutSeen.png')}/>
-            <Image style={styles.image} source={require('../assets/ChatInViewed.png')}/>
+            <Image style={styles.image} source={require('../assets/ChatViewedPhoto.png')}/>
             <Image style={styles.image} source={require('../assets/ChatOutSeen.png')}/>
-            <Image style={styles.image} source={require('../assets/ChatInViewed.png')}/>
+            <Image style={styles.image} source={require('../assets/ChatViewedPhoto.png')}/>
             <Image style={styles.image} source={require('../assets/ChatOutSeen.png')}/>
         </View>
     )
 }
 
+
+
 export default Design
-const imgSize = 40;
+const imgSize = 34;
 
 const styles = StyleSheet.create({
     row: {
@@ -30,6 +39,8 @@ const styles = StyleSheet.create({
         
     },
     image:{
+        tintColor:"black",
+        opacity:0.07,
         width:imgSize,
         height:imgSize,
 

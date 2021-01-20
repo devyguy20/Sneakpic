@@ -1,16 +1,4 @@
-# Sneakpic
-la epic glizzy app
+# SneakPic
+
 # Packages:
-
-# Routes:
-Main:     
-  -Chats      
-  -Profile      
-  -Feed     
-  -Notifications      
-  -Discovery      
-Splach:     
-  -Login -> Feed      
-  -Signup -> Feed     
-
-  
+npm install @react-navigation/material-top-tabs react-native-tab-view- FOR SWIPING BETWEEN SCREENS

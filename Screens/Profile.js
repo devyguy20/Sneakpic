@@ -1,119 +1,104 @@
-import React,{useState} from 'react'
-import { StyleSheet, Text, View,Image, Button } from 'react-native'
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
-import ProfileData from '../Components/ProfileData'
+import React, { useState } from 'react';
+import {
+	StyleSheet,
+	Text,
+	View,
+	Image,
+	Button,
+	Switch,
+	ScrollView,
+	Dimensions,
+	SafeAreaView,
+} from 'react-native';
+import { useNunito, Nunito } from '../Util/Nunito';
+import {
+	FlatList,
+	TouchableHighlight,
+	TouchableOpacity,
+} from 'react-native-gesture-handler';
+import ProfileData from '../Components/ProfileData';
+import Album from '../Components/Album';
+import firebase from 'firebase';
+import { useEffect } from 'react';
+import * as ImagePicker from 'expo-image-picker';
+import { downLoadImage, uploadImage } from '../Util/FireBasePictures';
+import ProfileHeader from '../Components/ProfileHeader';
+import ProfileSubHeader from '../Components/ProfileSubHeader';
+import PostList from '../Components/PostList';
 
-const Profile = () => {
-    
+const Profile = ({ firstName, lastName, userName, navigation, img }) => {
+	// const username = 'menomo';
+	//const firstName = 'Menashe';
+	// const lastName = 'Mamterionet';
+	const user = firebase.auth().currentUser;
+	if (!firstName) {
+		firstName = '';
+		lastName = 'Mamterionet';
+		userName = user.displayName;
+		img = user.photoURL;
+	}
+	const [image, setImage] = useState(img);
+	// console.log(image);
 
-    return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                {/* Header */}
-                <View>
-                    <Text>Harvey Lockwood</Text>
-                    <Text>Menomo</Text>
-                </View>
-                
-                <View style={styles.options}>
-                    <Text>(_Options Icon goes here_)</Text>
-                </View>
-            </View>
+	// const addCam = () => {
+	// 	navigation.navigate('Camera');
+	// };
 
+	return (
+		<SafeAreaView style={styles.whiteBack}>
+			{/* <Image style={styles.roundedImg} source={{ uri: image }} /> */}
+			<View style={styles.container}>
+				<ProfileHeader userName={userName} lastName={lastName} />
+				<ScrollView showsVerticalScrollIndicator={false}>
+					<ProfileSubHeader image={image} user={user} setImage={setImage} />
+					<View style={styles.coolLine} />
+					<PostList navigation={navigation} />
+				</ScrollView>
+			</View>
+		</SafeAreaView>
+	);
+};
 
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
-            <View style={styles.followers}>
-                {/* Profile Image and Followers goes here*/}
-                <View>
-                    <Image style={styles.roundedImg} source={require('../assets/dummy.jpg')} />
-                </View>
-                <View>
-                    <View style={{flexDirection:'row-reverse',justifyContent:'space-around',padding:10}}>
-                        <ProfileData text="Friends" num="69"/>
-                        <ProfileData text="Followers" num="1069"/>
-                        <ProfileData text="Faves" num="10069"/>
-                    </View>
-                    <View>
-                        <TouchableOpacity>
-                        
-                            <Text style={styles.shareBtn}>Share</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
-            </View>
-            
-            <View style={styles.list}>
-                {/* Posts goes here*/}
-                <FlatList 
-                numColumns={2}
-                data={[<Image style={styles.post} source={require('../assets/dummy.jpg')}/>,<Image style={styles.post} source={require('../assets/dummy2.jpg')} />]}
-                renderItem={({item}) => {
-                    return item
-                }}
-                
-                />
-            </View>
-        </View>
-    )
-}
-
-export default Profile
-const imageSize = 100;
-const postWidth =150
-const postHeightRation = postWidth * 1.75
+export default Profile;
+const postWidth = width / 2.1;
+const postHeightRation = postWidth * 1.6;
 const styles = StyleSheet.create({
-    container:{
-    alignItems:'flex-end',
-    justifyContent:'center',
-    marginTop: 20,
-    backgroundColor:'#fff',
-    },
-    header:{
-        flexDirection:'row-reverse',
-        marginTop: 250,
-        padding:10,
-    },
-    roundedImg:{
-        borderRadius: 200,
-        width:imageSize,
-        height:imageSize
+	container: {
+		height: height,
+		width: width,
+		justifyContent: 'center',
+		backgroundColor: '#fff',
+	},
 
-    },
-    followers: {
-        flexDirection:'row-reverse',
-        paddingVertical: 5,
-        paddingHorizontal: 10
+	headerText: {
+		fontSize: 20,
+	},
 
-    },
-    post:{
-        width:postWidth,
-        height:postHeightRation,
-        marginVertical: 10,
-        borderRadius:10,
-        margin:10
-    },
-    list:{
-        justifyContent:'center',
-        alignItems:'center',
-        padding:10
-    },
-    shareBtn:{
-        textAlign:'center',
-        borderWidth:1,
-        borderColor:'gray',
-        alignSelf:'center',
-        width:200,
-        padding:10,
-        borderRadius:50
-    },
-    options:{
-        marginLeft:100,
-        paddingHorizontal:20
-    }
-    
-    
-    
+	addCam: {
+		padding: 12,
+		borderColor: 'white',
+		borderWidth: 3,
+		borderRadius: 100,
+		left: 80,
+		top: -30,
+		width: 38,
+		height: 38,
+		backgroundColor: '#FF009D',
+	},
 
+	coolLine: {
+		backgroundColor: '#f4f4f4',
+		opacity: 0.65,
+		marginTop: 20,
+		width: width / 1.15,
+		height: 1.5,
+		alignSelf: 'center',
+	},
 
-})
+	whiteBack: {
+		backgroundColor: 'white',
+	},
+});
